@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# 🌍 GeoMark Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Sistema de Gerenciamento de Mapas e Pontos Geográficos**  
+*Teste Técnico para Vaga de Intern Software Developer - NerdMonster*
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📋 Índice
+- [Visão Geral](#visão-geral)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Funcionalidades](#funcionalidades)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação e Execução](#instalação-e-execução)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [API Endpoints](#api-endpoints)
+- [Telas do Sistema](#telas-do-sistema)
+- [Critérios do Teste Atendidos](#critérios-do-teste-atendidos)
+- [Autor](#autor)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🎯 Visão Geral
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+O **GeoMark Manager** é um sistema fullstack para criação e gerenciamento de mapas interativos com pontos geográficos. Desenvolvido como parte do processo seletivo da NerdMonster, o projeto demonstra habilidades em desenvolvimento web, banco de dados, APIs REST e interfaces interativas.
 
-### `npm test`
+**Objetivo:** Criar uma aplicação completa que permita aos usuários criar mapas, adicionar pontos através de interface visual, pesquisar endereços e gerenciar todos os dados de forma intuitiva.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🛠 Tecnologias Utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### **Backend**
+- **Python 3.8+** com **Flask** - Framework web leve e eficiente
+- **Flask-SQLAlchemy** - ORM para banco de dados
+- **Flask-CORS** - Habilitar comunicação entre frontend e backend
+- **SQLite** - Banco de dados relacional embutido
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### **Frontend**
+- **React 18** - Biblioteca para construção de interfaces
+- **React Router DOM** - Navegação entre páginas
+- **Leaflet + React-Leaflet** - Mapas interativos com OpenStreetMap
+- **Axios** - Cliente HTTP para consumir a API
+- **CSS3** - Estilização customizada com paleta otimizada para mapas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **Ferramentas**
+- **Git** - Controle de versão
+- **NPM** - Gerenciador de pacotes Node.js
+- **Pip** - Gerenciador de pacotes Python
+- **VS Code** - Editor de código recomendado
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ✨ Funcionalidades
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ✅ **Requisitos Obrigatórios**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### **Tela 1 - Listagem de Mapas**
+- Lista todos os mapas criados com nome e quantidade de pontos
+- Exibe data de criação de cada mapa
+- Criação de novos mapas com validação
+- Navegação para detalhes de cada mapa
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### **Tela 2 - Detalhe do Mapa (Cadastro de Pontos)**
+- Mapa interativo com OpenStreetMap/Leaflet
+- Lista lateral com todos os pontos cadastrados
+- Indicador visível com total de pontos
+- Clique no mapa para adicionar novos pontos
+- Modal de cadastro com latitude/longitude automáticas
+- Edição de nome dos pontos
+- Exclusão individual de pontos
+- Exclusão em lote de todos os pontos do mapa
+- **NOVO:** Exclusão completa de mapas
 
-## Learn More
+### 🚀 **Funcionalidades Extras Implementadas**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### **Pesquisa Avançada de Endereços**
+- Barra de pesquisa integrada com Nominatim API (OpenStreetMap)
+- Busca por endereços completos (ex: "Avenida Paulista, São Paulo")
+- Centralização automática do mapa no local encontrado
+- Sugestão de criação de ponto a partir do resultado
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### **Interface e UX**
+- **Paleta de cores otimizada para mapas:**
+  - Fundo: `#020617` (slate-950)
+  - Cards: `#0f172a` (slate-900) com transparência
+  - Destaque: `#38bdf8` (azul claro)
+  - Texto secundário: `#94a3b8` (slate-400)
+- Design responsivo (mobile/desktop)
+- Feedback visual com modais e estados de loading
+- Tratamento de erros e conexão
+- Confirmações para ações destrutivas
 
-### Code Splitting
+#### **Gerenciamento Avançado**
+- Exclusão completa de mapas (com confirmação)
+- Relacionamento em cascata (excluir mapa → exclui todos os pontos)
+- Health check da API
+- CORS configurado para desenvolvimento
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 📋 Pré-requisitos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Antes de começar, certifique-se de ter instalado:
 
-### Making a Progressive Web App
+- **Node.js 16+** e **NPM** ([Download](https://nodejs.org/))
+- **Python 3.8+** e **Pip** ([Download](https://www.python.org/downloads/))
+- **Git** ([Download](https://git-scm.com/))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🚀 Instalação e Execução
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### **1. Clone o repositório**
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+git clone https://github.com/seu-usuario/geo-mark-manager.git
+cd geo-mark-manager

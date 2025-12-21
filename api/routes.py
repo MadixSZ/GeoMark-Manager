@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from .models import db, Mapa, Ponto
+from models import db, Mapa, Ponto  
 
 def init_routes(app):
     
@@ -31,6 +31,13 @@ def init_routes(app):
             'nome': novo_mapa.nome,
             'data_criacao': novo_mapa.data_criacao.isoformat()
         }), 201
+    
+    @app.route('/api/mapas/<int:mapa_id>', methods=['DELETE'])
+    def deletar_mapa(mapa_id):
+        mapa = Mapa.query.get_or_404(mapa_id)
+        db.session.delete(mapa)
+        db.session.commit()
+        return '', 204
     
     @app.route('/api/mapas/<int:mapa_id>/pontos', methods=['GET'])
     def get_pontos(mapa_id):
