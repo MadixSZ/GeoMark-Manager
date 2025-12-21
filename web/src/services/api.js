@@ -9,6 +9,7 @@ const api = axios.create({
 export const mapasAPI = {
     getAll: () => api.get('/mapas'),
     create: (nome) => api.post('/mapas', { nome }),
+    deleteMapa: (mapaId) => api.delete(`/mapas/${mapaId}`),
     getPontos: (mapaId) => api.get(`/mapas/${mapaId}/pontos`),
     createPonto: (mapaId, ponto) => api.post(`/mapas/${mapaId}/pontos`, ponto),
     updatePonto: (pontoId, nome) => api.put(`/pontos/${pontoId}`, { nome }),

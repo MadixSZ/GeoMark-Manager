@@ -11,7 +11,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f8f9fa;
+  background-color: #020617; 
+  color: #f1f5f9; 
+  min-height: 100vh;
 }
 
 code {
@@ -65,5 +67,49 @@ code {
   align-items: center;
   height: 100vh;
   font-size: 1.2rem;
-  color: #666;
+  color: #38bdf8; 
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b; 
+}
+
+/* Links gerais */
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Botões padrão */
+button {
+  font-family: inherit;
+}
+
+/* Classe de erro geral */
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin: 10px 0;
 }
